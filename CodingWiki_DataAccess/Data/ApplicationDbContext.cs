@@ -1,6 +1,7 @@
 ﻿using CodingWiki_DataAccess.FluentConfig;
 using CodingWiki_Model.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +19,6 @@ namespace CodingWiki_DataAccess.Data
         public DbSet<SubCategory> SubCategories { get; set; }
         public DbSet<BookDetail> BookDetails { get; set; }
         public DbSet<BookAuthorMap> BookAuthorMaps { get; set; }
-
         public DbSet<Fluent_BookDetail> BookDetail_Fluent { get; set; }
         public DbSet<Fluent_BookDetail> Fluent_Books { get; set; }
         public DbSet<Fluent_Author> Fluent_Authors { get; set; }
@@ -28,7 +28,8 @@ namespace CodingWiki_DataAccess.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=localhost; Database=CodingWiki; TrustServerCertificate=True; Trusted_Connection=True;");
+            optionsBuilder.UseSqlServer("Server=localhost; Database=CodingWiki; TrustServerCertificate=True; Trusted_Connection=True;")
+                .LogTo(Console.WriteLine, new[] {DbLoggerCategory.Database.Command.Name}, LogLevel.Information );
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
