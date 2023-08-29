@@ -3,18 +3,13 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CodingWiki_Model.Models
 {
-    public class Author
+    public class Fluent_Author
     {
-        [Key]
         public int Author_Id { get; set; }
-        [Required]
-        [MaxLength(50)]
         public string FirstName { get; set; }
-        [Required]
-        public int LastName { get; set; }
+        public string LastName { get; set; }
         public DateTime BirthDate{ get; set; }
         public string Location { get; set; }
-        [NotMapped]
         public string FullName
         {
             get
@@ -22,7 +17,8 @@ namespace CodingWiki_Model.Models
                 return $"{FirstName} {LastName}";
             }
         }
+        //public List<Fluent_Book> Books { get; set; }
 
-        public List<BookAuthorMap> BookAuthorMaps { get; set; }
+        public List<Fluent_BookAuthorMap> BookAuthorMaps { get; set; }
     }
 }
