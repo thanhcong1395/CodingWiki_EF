@@ -6,10 +6,10 @@ namespace CodingWiki_Model.Models
     [Table("Categories")]
     public class Category
     {
-        public int Id { get; set; }
+        public int CategoryId { get; set; }
         [Column("Name")]
         [Required]
-        public string GenreName { get; set; }
+        public string CategoryName { get; set; }
         //public int DisplayOrder { get; set; }
     }
 }
