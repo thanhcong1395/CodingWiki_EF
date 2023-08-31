@@ -15,7 +15,7 @@ namespace CodingWiki_Web.Controllers
         }
         public IActionResult Index()
         {
-            List<Category> objList = this.context.Categories.ToList();
+            List<Category> objList = this.context.Categories.AsNoTracking().ToList();
             return View(objList);
         }
 
